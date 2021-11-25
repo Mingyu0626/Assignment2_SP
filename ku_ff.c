@@ -17,17 +17,24 @@ int count; // 범위 안에 속하는 수
 
 int a1, a2, num_t;
 
-void *thread_func(void *count)
-{
+void *thread_func(void *arg);
 	// 여기가
 	// count 올릴지 판단하고 올리는 곳
-}
 
-struct NODE {
-	struct Node *next;
-	
-	
-}
+struct NODE {             
+	struct NODE *next;
+	char data[5];
+};
+
+struct PARAM {
+	int index;
+	int element;
+	int rest;
+
+};
+
+
+struct NODE *head;
 
 
 int main(int argc, char *argv[]) {
@@ -43,6 +50,7 @@ int main(int argc, char *argv[]) {
 	FILE* fp1 = fopen(argv[4],"r"); // input.txt
 	FILE* fp2 = fopen(argv[5],"w"); // output.txt
 
+	*head = malloc(sizeof(struct NODE));
 
 	if (a1 > a2) {
 		printf("a1 is bigger than a2.\n");
@@ -54,12 +62,30 @@ int main(int argc, char *argv[]) {
 	int elements = nums / num_t; // 스레드 1개당 할당되는 원소 수
 	int restElements = nums & num_t; // 전체 원소수를 스레드의 개수로 나눈 값의 나머지
 	
-	pthread_t* thread_id;
-	thread_id = (pthread_t*)malloc(sizeof(pthread_t) * conNum * conNum);
-	for (int j = 0; j < num_t; j++) {
-		int thr_id = pthread_create(&thread_id, NULL, thread_func, (void *)elements);
+	pthread_t thread_id;
+	for (int j = 0; j < num_t; j+=elements) {
+		*param = 
+		int thr_id = pthread_create(&thread_id, NULL, thread_func, &elements);
 	}
 
-	/**/
+	
 	/*스레드에서 가져온 값들 바탕으로 output.txt파일 작성*/
+	return 0;
 }
+
+
+
+void *thread_func(void *arg){
+	
+
+
+
+} 
+
+
+
+
+
+
+
+
