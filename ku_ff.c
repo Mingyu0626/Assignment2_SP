@@ -15,6 +15,12 @@ void *thread_func(void *count)
 
 }
 
+struct NODE {
+	struct Node *next;
+	
+	
+}
+
 
 
 int main(int argc, char *argv[]) {
@@ -27,6 +33,7 @@ int main(int argc, char *argv[]) {
 	int i = atoi(argv[3]); // 생성하는 스레드의 수
 	FILE* fp1 = fopen(argv[4],"r"); // input.txt
 	FILE* fp2 = fopen(argv[5],"w"); // output.txt
+
 
 	if (a1 > a2) {
 		printf("a1 is bigger than a2.\n");
