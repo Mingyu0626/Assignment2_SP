@@ -54,7 +54,8 @@ int main(int argc, char *argv[]) {
 	int elements = nums / num_t; // 스레드 1개당 할당되는 원소 수
 	int restElements = nums & num_t; // 전체 원소수를 스레드의 개수로 나눈 값의 나머지
 	
-	pthread_t thread_id, my_tid;
+	pthread_t* thread_id;
+	thread_id = (pthread_t*)malloc(sizeof(pthread_t) * conNum * conNum);
 	for (int j = 0; j < num_t; j++) {
 		int thr_id = pthread_create(&thread_id, NULL, thread_func, (void *)elements);
 	}
