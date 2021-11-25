@@ -6,8 +6,6 @@
 #include <signal.h>
 #include <sys/msg.h>
 #include <sys/ipc.h>
-#include <Window.h>
-#include <process.h>
 #include <pthread.h>
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
@@ -15,7 +13,7 @@ pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 // pthread_mutex_lock(&mutex);		lock 명령어
 
 // pthread_mutex_unlock(&mutex);	unlock 명령어
-int count;
+int count; // 범위 안에 속하는 수
 
 int a1, a2, num_t;
 
@@ -34,11 +32,11 @@ struct NODE {
 
 int main(int argc, char *argv[]) {
 
-    if (argc != 6) {
-            printf("인수의 개수가 5개가 아닙니다.\n");
-            return 0;
-    }
-    a1 = atoi(argv[1]); // 찾는 빈도수의 범위중 작은 수
+    	if (argc != 6) {
+            	printf("인수의 개수가 5개가 아닙니다.\n");
+            	return 0;
+    	}
+    	a1 = atoi(argv[1]); // 찾는 빈도수의 범위중 작은 수
 	a2 = atoi(argv[2]); // 찾는 빈도수의 범위중 큰
 	num_t = atoi(argv[3]); // 생성하는 스레드의 수
 
@@ -62,6 +60,5 @@ int main(int argc, char *argv[]) {
 	}
 
 	/**/
-
 	/*스레드에서 가져온 값들 바탕으로 output.txt파일 작성*/
 }
